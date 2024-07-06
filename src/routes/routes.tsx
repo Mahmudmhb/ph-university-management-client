@@ -4,7 +4,10 @@ import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
-import { AdminRoute } from "./Admin.route";
+import { AdminPath } from "./Admin.route";
+import { routeGenerator } from "../utils/routesGenarators";
+import { FacultyPaths } from "./Faculty.route";
+import { StudentPaths } from "./Student.route";
 
 export const router = createBrowserRouter([
   {
@@ -14,17 +17,17 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <App />,
-    children: AdminRoute,
-  },
-  {
-    path: "/student",
-    element: <App />,
-    children: AdminRoute,
+    children: routeGenerator(AdminPath),
   },
   {
     path: "/faculty",
     element: <App />,
-    children: AdminRoute,
+    children: routeGenerator(FacultyPaths),
+  },
+  {
+    path: "/student",
+    element: <App />,
+    children: routeGenerator(StudentPaths),
   },
 
   {
